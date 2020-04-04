@@ -21,3 +21,6 @@ erl_crash.dump
 
 # Docker
 tmp
+
+# ElixirLS VSCode extension
+.elixir_ls
