@@ -17,3 +17,10 @@ Start the server:
 ```sh
 mix phx.server
 ```
+
+## Deployment
+
+This app is configured for deployment on Heroku, using the following buildpacks:
+
+1. [Elixir Buildpack](https://github.com/HashNuke/heroku-buildpack-elixir)
+2. [Phoenix Static Buildpack](https://github.com/gjaldon/heroku-buildpack-phoenix-static)
