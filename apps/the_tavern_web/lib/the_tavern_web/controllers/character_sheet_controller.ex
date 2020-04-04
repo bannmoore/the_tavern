@@ -6,7 +6,7 @@ defmodule TheTavernWeb.CharacterSheetController do
 
   @spec index(Plug.Conn.t(), any) :: Plug.Conn.t()
   def index(conn, _params) do
-    character_sheets = CharacterSheets.get_character_sheets()
+    character_sheets = CharacterSheets.all_character_sheets()
     render(conn, "index.html", character_sheets: character_sheets)
   end
 
