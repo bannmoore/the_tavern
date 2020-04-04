@@ -18,6 +18,14 @@ Start the server:
 mix phx.server
 ```
 
+Run tests:
+
+```sh
+mix test
+# or
+mix test.watch # for TDD
+```
+
 ## Deployment
 
 This app is configured for deployment on Heroku, using the following buildpacks:
