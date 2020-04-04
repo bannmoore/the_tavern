@@ -32,3 +32,9 @@ This app is configured for deployment on Heroku, using the following buildpacks:
 
 1. [Elixir Buildpack](https://github.com/HashNuke/heroku-buildpack-elixir)
 2. [Phoenix Static Buildpack](https://github.com/gjaldon/heroku-buildpack-phoenix-static)
+
+After deploying code that adds migrations, use this command to run the migrations on the Heroku Postgres:
+
+```
+heroku run "POOL_SIZE=2 mix ecto.migrate"
+```
