@@ -1,1 +1,22 @@
 <h1>Character Sheets</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Class</th>
+      <th>Level</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for character_sheet <- @character_sheets do %>
+      <tr>
+        <td><%= character_sheet.name %></td>
+        <td><%= character_sheet.class %></td>
+        <td><%= character_sheet.level %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link "New Character Sheet", to: Routes.character_sheet_path(@conn, :new) %>
