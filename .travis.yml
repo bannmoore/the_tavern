@@ -1,0 +1,15 @@
+language: elixir
+elixir:
+  - 1.8.1
+env:
+  - MIX_ENV=test
+services:
+  - postgresql
+before_script:
+  - mix do ecto.create, ecto.migrate
+notifications:
+  email: false
+jobs:
+  include:
+    - stage: "Test"
+      script: mix test
