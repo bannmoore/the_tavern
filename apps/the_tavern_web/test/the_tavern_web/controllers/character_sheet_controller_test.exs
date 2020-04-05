@@ -63,4 +63,14 @@ defmodule TheTavernWeb.CharacterSheetControllerTest do
       refute html_response(conn, 200) =~ name
     end
   end
+
+  describe "show/2" do
+    test "renders a view of an existing character sheet", %{conn: conn} do
+      %CharacterSheet{name: name} = character_sheet = insert!(:character_sheet)
+
+      conn = get(conn, Routes.character_sheet_path(conn, :show, character_sheet))
+      assert html_response(conn, 200) =~ "Show Character Sheet"
+      assert html_response(conn, 200) =~ name
+    end
+  end
 end

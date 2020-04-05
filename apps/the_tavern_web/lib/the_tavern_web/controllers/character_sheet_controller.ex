@@ -36,4 +36,9 @@ defmodule TheTavernWeb.CharacterSheetController do
     |> put_flash(:info, "Character Sheet deleted successfully.")
     |> redirect(to: Routes.character_sheet_path(conn, :index))
   end
+
+  def show(conn, %{"id" => id}) do
+    character_sheet = CharacterSheets.get_character_sheet(id)
+    render(conn, "show.html", character_sheet: character_sheet)
+  end
 end

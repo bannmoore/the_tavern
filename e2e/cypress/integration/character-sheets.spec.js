@@ -29,6 +29,15 @@ describe("Character Sheets", function () {
 		cy.contains(characterData.name).should("exist");
 	});
 
+	it("Shows an existing characte sheet", function () {
+		cy.visit("/character-sheets");
+
+		cy.contains(characterData.name).closest("tr").contains("Show").click();
+
+		cy.contains("Show Character Sheet").should("exist");
+		cy.contains(characterData.name).should("exist");
+	});
+
 	it("Deletes an existing character sheet", function () {
 		cy.visit("/character-sheets");
 

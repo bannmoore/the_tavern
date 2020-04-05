@@ -1,0 +1,17 @@
+<h2>Show Character Sheet</h2>
+<ul>
+  <li>
+    <strong>Name:</strong>
+    <%= @character_sheet.name %>
+  </li>
+  <li>
+    <strong>Class:</strong>
+    <%= @character_sheet.class %>
+  </li>
+  <li>
+    <strong>Level:</strong>
+    <%= @character_sheet.level %>
+  </li>
+</ul>
+
+<span><%= link "Back", to: Routes.character_sheet_path(@conn, :index) %></span>
