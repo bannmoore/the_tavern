@@ -10,6 +10,7 @@ defmodule TheTavernWeb.CharacterSheetController do
     render(conn, "index.html", character_sheets: character_sheets)
   end
 
+  @spec new(Plug.Conn.t(), any) :: Plug.Conn.t()
   def new(conn, _params) do
     changeset = CharacterSheets.change_character_sheet(%CharacterSheet{})
     render(conn, "new.html", changeset: changeset)
@@ -25,5 +26,14 @@ defmodule TheTavernWeb.CharacterSheetController do
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
+  end
+
+  def delete(conn, %{"id" => id}) do
+    character_sheet = CharacterSheets.get_character_sheet(id)
+    {:ok, _character_sheet} = CharacterSheets.delete_character_sheet(character_sheet)
+
+    conn
+    |> put_flash(:info, "Character Sheet deleted successfully.")
+    |> redirect(to: Routes.character_sheet_path(conn, :index))
   end
 end

@@ -6,6 +6,7 @@
       <th>Name</th>
       <th>Class</th>
       <th>Level</th>
+			<th></th>
     </tr>
   </thead>
   <tbody>
@@ -14,6 +15,9 @@
         <td><%= character_sheet.name %></td>
         <td><%= character_sheet.class %></td>
         <td><%= character_sheet.level %></td>
+				<td>
+					<%= link "Delete", to: Routes.character_sheet_path(@conn, :delete, character_sheet), method: :delete, data: [confirm: "Are you sure?"] %>
+				</td>
       </tr>
     <% end %>
   </tbody>

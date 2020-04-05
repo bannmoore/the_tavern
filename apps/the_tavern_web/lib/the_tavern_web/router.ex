@@ -17,7 +17,10 @@ defmodule TheTavernWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    resources("/character-sheets", CharacterSheetController, only: [:index, :new, :create])
+
+    resources("/character-sheets", CharacterSheetController,
+      only: [:index, :new, :create, :delete]
+    )
   end
 
   # Other scopes may use custom stacks.

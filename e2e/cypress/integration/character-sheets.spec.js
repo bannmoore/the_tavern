@@ -1,6 +1,12 @@
 import faker from "faker";
 import { classes } from "./../support/helpers";
 
+const characterData = {
+	name: faker.name.findName(),
+	class: faker.random.arrayElement(classes),
+	level: faker.random.number({ min: 1, max: 20 }),
+};
+
 describe("Character Sheets", function () {
 	it("Creates a new character sheet.", function () {
 		// Navigate to the create character sheet form.
@@ -8,14 +14,9 @@ describe("Character Sheets", function () {
 		cy.contains("New Character Sheet").click();
 
 		// Fill out the form.
-		const characterName = faker.name.findName();
-		cy.get('input[name="character_sheet[name]"]').type(characterName);
-		cy.get('select[name="character_sheet[class]"]').select(
-			faker.random.arrayElement(classes)
-		);
-		cy.get('input[name="character_sheet[level]"]').type(
-			faker.random.number({ min: 1, max: 20 })
-		);
+		cy.get('input[name="character_sheet[name]"]').type(characterData.name);
+		cy.get('select[name="character_sheet[class]"]').select(characterData.class);
+		cy.get('input[name="character_sheet[level]"]').type(characterData.level);
 
 		// Submit the form
 		cy.get('button[type="submit"]').click();
@@ -25,6 +26,19 @@ describe("Character Sheets", function () {
 			"have.text",
 			"Character sheet created successfully."
 		);
-		cy.contains(characterName).should("exist");
+		cy.contains(characterData.name).should("exist");
+	});
+
+	it("Deletes an existing character sheet", function () {
+		cy.visit("/character-sheets");
+
+		cy.on("window:confirm", (str) => {
+			expect(str).to.eq("Are you sure?");
+			return true;
+		});
+
+		cy.contains(characterData.name).closest("tr").contains("Delete").click();
+
+		cy.contains(characterData.name).should("not.exist");
 	});
 });

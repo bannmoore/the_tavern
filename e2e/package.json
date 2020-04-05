@@ -4,6 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
+		"cy:open": "node_modules/.bin/cypress open",
 		"cy:run": "node_modules/.bin/cypress run",
 		"format": "prettier . --write",
 		"test": "node_modules/.bin/wait-on http://localhost:4000 && npm run cy:run"

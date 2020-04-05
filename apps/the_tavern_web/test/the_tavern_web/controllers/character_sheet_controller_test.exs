@@ -48,4 +48,19 @@ defmodule TheTavernWeb.CharacterSheetControllerTest do
       assert html_response(conn, 200) =~ "New Character Sheet"
     end
   end
+
+  describe "delete/2" do
+    test "deletes character_sheet", %{conn: conn} do
+      %CharacterSheet{name: name} = character_sheet = insert!(:character_sheet)
+
+      conn = get(conn, Routes.character_sheet_path(conn, :index))
+      assert html_response(conn, 200) =~ name
+
+      conn = delete(conn, Routes.character_sheet_path(conn, :delete, character_sheet))
+      assert redirected_to(conn) == Routes.character_sheet_path(conn, :index)
+
+      conn = get(conn, Routes.character_sheet_path(conn, :index))
+      refute html_response(conn, 200) =~ name
+    end
+  end
 end
