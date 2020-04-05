@@ -1,5 +1,7 @@
 # The Tavern
 
+[![Build Status](https://travis-ci.org/bannmoore/the_tavern.svg?branch=master)](https://travis-ci.org/bannmoore/the_tavern)
+
 ## Getting Started
 
 First-time setup:
