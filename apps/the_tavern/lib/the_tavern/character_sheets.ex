@@ -12,7 +12,7 @@ defmodule TheTavern.CharacterSheets do
     resource(CharacterSheet, only: [:all, :change, :create])
   end
 
-  def get_class_list() do
+  def get_class_list do
     [
       "Barbarian",
       "Bard",

@@ -5,7 +5,8 @@ defmodule TheTavern.Umbrella.MixProject do
     [
       apps_path: "apps",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      aliases: aliases()
     ]
   end
 
@@ -24,7 +25,16 @@ defmodule TheTavern.Umbrella.MixProject do
   defp deps do
     [
       {:faker, "~> 0.13", only: :test},
-      {:mix_test_watch, "~> 1.0", only: :dev, runtime: false}
+      {:mix_test_watch, "~> 1.0", only: :dev, runtime: false},
+      {:credo, "~> 1.3", only: [:dev, :test], runtime: false}
+    ]
+  end
+
+  defp aliases do
+    [
+      check: ["format", "clean", "compile", "credo"],
+      compile: ["compile --force --warnings-as-errors"],
+      credo: ["credo --strict"]
     ]
   end
 end

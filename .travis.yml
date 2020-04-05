@@ -5,11 +5,19 @@ env:
   - MIX_ENV=test
 services:
   - postgresql
-before_script:
-  - mix do ecto.create, ecto.migrate
+cache:
+  directories:
+    - _build
+    - deps
+    - apps/the_tavern_web/assets/node_modules
 notifications:
   email: false
 jobs:
   include:
+    - stage: "Compile"
+      script:
+        - mix do ecto.create, ecto.migrate
+        - mix compile
+        - mix check
     - stage: "Test"
       script: mix test

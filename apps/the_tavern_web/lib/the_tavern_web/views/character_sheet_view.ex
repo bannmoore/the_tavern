@@ -3,7 +3,7 @@ defmodule TheTavernWeb.CharacterSheetView do
 
   alias TheTavern.CharacterSheets
 
-  def get_class_options() do
+  def get_class_options do
     CharacterSheets.get_class_list()
   end
 end

@@ -1,8 +1,8 @@
 defmodule TheTavernWeb.CharacterSheetController do
   use TheTavernWeb, :controller
 
-  alias TheTavern.CharacterSheets.CharacterSheet
   alias TheTavern.CharacterSheets
+  alias TheTavern.CharacterSheets.CharacterSheet
 
   @spec index(Plug.Conn.t(), any) :: Plug.Conn.t()
   def index(conn, _params) do

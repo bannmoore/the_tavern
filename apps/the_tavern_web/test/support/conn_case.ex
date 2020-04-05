@@ -17,6 +17,8 @@ defmodule TheTavernWeb.ConnCase do
 
   use ExUnit.CaseTemplate
 
+  alias Ecto.Adapters.SQL.Sandbox, as: SQLSandbox
+
   using do
     quote do
       # Import conveniences for testing with connections
@@ -29,10 +31,10 @@ defmodule TheTavernWeb.ConnCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(TheTavern.Repo)
+    :ok = SQLSandbox.checkout(TheTavern.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(TheTavern.Repo, {:shared, self()})
+      SQLSandbox.mode(TheTavern.Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}

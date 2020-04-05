@@ -1,4 +1,8 @@
 defmodule TheTavern.Factory do
+  @moduledoc """
+  Helper methods for generating / inserting database models during tests.
+  """
+
   alias TheTavern.Repo
 
   alias TheTavern.CharacterSheets
