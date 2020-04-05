@@ -32,7 +32,7 @@ defmodule TheTavern.Umbrella.MixProject do
 
   defp aliases do
     [
-      check: ["format", "clean", "compile", "credo"],
+      check: ["clean", "compile", "credo"],
       compile: ["compile --force --warnings-as-errors"],
       credo: ["credo --strict"],
       format: ["format", "cmd --app the_tavern_web 'npm --prefix assets run format'"]
