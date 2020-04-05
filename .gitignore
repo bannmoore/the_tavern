@@ -27,3 +27,6 @@ tmp
 
 # NPM
 node_modules
+
+# Git
+.git

@@ -7,6 +7,8 @@
 First-time setup:
 
 ```sh
+bin/install.sh
+
 mix deps.get
 (cd apps/the_tavern_web && npm insall --prefix assets)
 

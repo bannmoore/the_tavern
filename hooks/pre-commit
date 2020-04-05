@@ -1,0 +1,18 @@
+#!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+
+printf "\n"
+echo "Running pre-commit hook:"
+
+# Format project Elixir and JavaScript
+echo "  - Formatting Phoenix app directories..."
+mix format > /dev/null
+
+# Format e2e JS
+echo "  - Formatting e2e directory..."
+(cd e2e && npm run format > /dev/null)
+
+echo "pre-commit hook completed successfully."
+printf "\n"
+exit 0

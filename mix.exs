@@ -34,7 +34,8 @@ defmodule TheTavern.Umbrella.MixProject do
     [
       check: ["format", "clean", "compile", "credo"],
       compile: ["compile --force --warnings-as-errors"],
-      credo: ["credo --strict"]
+      credo: ["credo --strict"],
+      format: ["format", "cmd --app the_tavern_web 'npm --prefix assets run format'"]
     ]
   end
 end
