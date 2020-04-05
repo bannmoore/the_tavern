@@ -17,6 +17,7 @@
         <td><%= character_sheet.level %></td>
 				<td>
 				 	<%= link "Show", to: Routes.character_sheet_path(@conn, :show, character_sheet) %>
+					<%= link "Edit", to: Routes.character_sheet_path(@conn, :edit, character_sheet) %>
 					<%= link "Delete", to: Routes.character_sheet_path(@conn, :delete, character_sheet), method: :delete, data: [confirm: "Are you sure?"] %>
 				</td>
       </tr>

@@ -23,19 +23,58 @@ describe("Character Sheets", function () {
 
 		// Verify that the form submitted successfully.
 		cy.get(".alert").should(
-			"have.text",
+			"contain.text",
 			"Character sheet created successfully."
 		);
 		cy.contains(characterData.name).should("exist");
 	});
 
-	it("Shows an existing characte sheet", function () {
+	it("Shows an existing character sheet", function () {
 		cy.visit("/character-sheets");
 
 		cy.contains(characterData.name).closest("tr").contains("Show").click();
 
 		cy.contains("Show Character Sheet").should("exist");
 		cy.contains(characterData.name).should("exist");
+
+		cy.contains("Back").click();
+
+		cy.contains("Character Sheets");
+	});
+
+	it("Edits an existing character sheet", function () {
+		cy.visit("/character-sheets");
+
+		cy.contains(characterData.name).closest("tr").contains("Edit").click();
+
+		cy.contains("Edit Character Sheet").should("exist");
+
+		cy.get('input[name="character_sheet[name]"]').clear();
+		cy.get('button[type="submit"]').click();
+
+		cy.contains("Edit Character Sheet").should("exist");
+		cy.get(".alert").should(
+			"contain.text",
+			"Oops, something went wrong! Please check the errors below."
+		);
+		cy.contains("can't be blank").should("exist");
+
+		characterData.name = faker.name.findName();
+		cy.get('input[name="character_sheet[name]"]').type(characterData.name);
+		cy.get('button[type="submit"]').click();
+
+		cy.contains("Show Character Sheet").should("exist");
+		cy.get(".alert").should(
+			"contain.text",
+			"Character sheet updated successfully."
+		);
+		cy.contains(characterData.name).should("exist");
+
+		// Validate the back button on the Edit form
+		cy.visit("/character-sheets");
+		cy.contains(characterData.name).closest("tr").contains("Edit").click();
+		cy.contains("Back").click();
+		cy.contains("Character Sheets").should("exist");
 	});
 
 	it("Deletes an existing character sheet", function () {
@@ -47,7 +86,10 @@ describe("Character Sheets", function () {
 		});
 
 		cy.contains(characterData.name).closest("tr").contains("Delete").click();
-
+		cy.get(".alert").should(
+			"contain.text",
+			"Character sheet deleted successfully."
+		);
 		cy.contains(characterData.name).should("not.exist");
 	});
 });

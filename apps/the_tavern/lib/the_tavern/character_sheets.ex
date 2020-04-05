@@ -9,7 +9,7 @@ defmodule TheTavern.CharacterSheets do
   alias TheTavern.Repo
 
   using_repo(Repo) do
-    resource(CharacterSheet, only: [:all, :change, :create, :delete, :get])
+    resource(CharacterSheet, only: [:all, :change, :create, :delete, :get, :update])
   end
 
   def get_class_list do

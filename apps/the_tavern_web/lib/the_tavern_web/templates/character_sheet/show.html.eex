@@ -14,4 +14,4 @@
   </li>
 </ul>
 
-<span><%= link "Back", to: Routes.character_sheet_path(@conn, :index) %></span>
+<%= link "Back", to: Routes.character_sheet_path(@conn, :index) %>

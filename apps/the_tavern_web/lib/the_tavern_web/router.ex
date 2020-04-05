@@ -19,7 +19,7 @@ defmodule TheTavernWeb.Router do
     get "/", PageController, :index
 
     resources("/character-sheets", CharacterSheetController,
-      only: [:index, :new, :create, :delete, :show]
+      only: [:index, :new, :create, :delete, :edit, :show, :update]
     )
   end
 
