@@ -24,3 +24,6 @@ tmp
 
 # ElixirLS VSCode extension
 .elixir_ls
+
+# NPM
+node_modules

@@ -1,23 +1,30 @@
 language: elixir
 elixir:
   - 1.8.1
+
 env:
-  - MIX_ENV=test
+  - MIX_ENV=test CYPRESS_CACHE_FOLDER=.cache
+
+addons:
+  postgresql: "9.4"
+
 services:
   - postgresql
-cache:
-  directories:
-    - _build
-    - deps
-    - apps/the_tavern_web/assets/node_modules
+
+before_script:
+  - cp config/travis_test.exs config/test.exs
+  - cp config/travis_prod.exs config/prod.exs
+  - mix do ecto.create, ecto.migrate
+  - MIX_ENV=prod mix do ecto.create, ecto.migrate
+
+script:
+  - mix check
+  - mix test
+  - (cd e2e && npm install)
+  - (cd apps/the_tavern_web && npm install --prefix assets && npm run deploy --prefix assets)
+  - MIX_ENV=prod mix phx.server &
+  - (cd e2e && npm test)
+  - kill $(jobs -p) || true
+
 notifications:
   email: false
-jobs:
-  include:
-    - stage: "Compile"
-      script:
-        - mix do ecto.create, ecto.migrate
-        - mix compile
-        - mix check
-    - stage: "Test"
-      script: mix test
