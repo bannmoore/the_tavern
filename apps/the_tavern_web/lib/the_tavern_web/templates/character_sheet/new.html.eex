@@ -1,3 +1,32 @@
 <h1>New Character Sheet</h1>
 
-<%= render "_form.html", Map.put(assigns, :action, Routes.character_sheet_path(@conn, :create)) %>
+<%= form_for @changeset, Routes.character_sheet_path(@conn, :create), fn f -> %>
+
+	<%= if @changeset.action do %>
+		<p class="alert alert-danger">
+			Oops, something went wrong! Please check the errors below.
+		</p>
+	<% end %>
+
+	<div>
+		<%= label f, :name %>
+		<%= text_input f, :name %>
+		<small><%= error_tag f, :name %></small>
+	</div>
+
+	<div>
+		<%= label f, :class %>
+		<%= select f, :class, get_class_options() %>
+		<small><%= error_tag f, :class %></small>
+
+	</div>
+
+	<div>
+		<%= label f, :level %>
+		<%= number_input f, :level %>
+		<small><%= error_tag f, :level %></small>
+	</div>
+
+	<button type="submit">Submit</button>
+
+<% end %>

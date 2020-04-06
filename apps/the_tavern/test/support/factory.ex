@@ -13,7 +13,13 @@ defmodule TheTavern.Factory do
     %{
       name: Faker.Superhero.name(),
       class: Faker.Util.pick(CharacterSheets.get_class_list()),
-      level: Faker.random_between(1, 20)
+      level: Faker.random_between(1, 20),
+      ability_str: Faker.random_between(0, 30),
+      ability_dex: Faker.random_between(0, 30),
+      ability_con: Faker.random_between(0, 30),
+      ability_int: Faker.random_between(0, 30),
+      ability_wis: Faker.random_between(0, 30),
+      ability_cha: Faker.random_between(0, 30)
     }
   end
 

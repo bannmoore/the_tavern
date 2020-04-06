@@ -14,4 +14,15 @@
   </li>
 </ul>
 
+<h3>Attributes</h3>
+<ul>
+	<li>STR: <%= @character_sheet.ability_str %> (<%= render_modifier(@character_sheet.ability_str) %>)</li>
+	<li>DEX: <%= @character_sheet.ability_dex %> (<%= render_modifier(@character_sheet.ability_dex) %>)</li>
+	<li>CON: <%= @character_sheet.ability_con %> (<%= render_modifier(@character_sheet.ability_con) %>)</li>
+	<li>INT: <%= @character_sheet.ability_int %> (<%= render_modifier(@character_sheet.ability_int) %>)</li>
+	<li>WIS: <%= @character_sheet.ability_wis %> (<%= render_modifier(@character_sheet.ability_wis) %>)</li>
+	<li>CHA: <%= @character_sheet.ability_cha %> (<%= render_modifier(@character_sheet.ability_cha) %>)</li>
+</ul>
+
 <%= link "Back", to: Routes.character_sheet_path(@conn, :index) %>
+<%= link "Edit", to: Routes.character_sheet_path(@conn, :edit, @character_sheet) %>

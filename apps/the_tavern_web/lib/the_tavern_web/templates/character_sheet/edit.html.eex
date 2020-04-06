@@ -1,5 +1,69 @@
 <h2>Edit Character Sheet</h2>
 
-<%= render "_form.html", Map.put(assigns, :action, Routes.character_sheet_path(@conn, :update, @character_sheet)) %>
+<%= form_for @changeset, Routes.character_sheet_path(@conn, :update, @character_sheet), fn f -> %>
+
+	<%= if @changeset.action do %>
+		<p class="alert alert-danger">
+			Oops, something went wrong! Please check the errors below.
+		</p>
+	<% end %>
+
+	<div>
+		<%= label f, :name %>
+		<%= text_input f, :name %>
+		<small><%= error_tag f, :name %></small>
+	</div>
+
+	<div>
+		<%= label f, :class %>
+		<%= select f, :class, get_class_options() %>
+		<small><%= error_tag f, :class %></small>
+	</div>
+
+	<div>
+		<%= label f, :level %>
+		<%= number_input f, :level %>
+		<small><%= error_tag f, :level %></small>
+	</div>
+
+	<div>
+		<%= label f, :ability_str, "STR" %>
+		<%= ability_input f, :ability_str %>
+		<small><%= error_tag f, :ability_str %></small>
+	</div>
+
+		<div>
+		<%= label f, :ability_dex, "DEX" %>
+		<%= ability_input f, :ability_dex %>
+		<small><%= error_tag f, :ability_dex %></small>
+	</div>
+
+	<div>
+		<%= label f, :ability_con, "CON" %>
+		<%= ability_input f, :ability_con %>
+		<small><%= error_tag f, :ability_con %></small>
+	</div>
+
+		<div>
+		<%= label f, :ability_int, "INT" %>
+		<%= ability_input f, :ability_int %>
+		<small><%= error_tag f, :ability_int %></small>
+	</div>
+
+		<div>
+		<%= label f, :ability_wis, "WIS" %>
+		<%= ability_input f, :ability_wis %>
+		<small><%= error_tag f, :ability_wis %></small>
+	</div>
+
+		<div>
+		<%= label f, :ability_cha, "CHA" %>
+		<%= ability_input f, :ability_cha %>
+		<small><%= error_tag f, :ability_cha %></small>
+	</div>
+
+	<button type="submit">Submit</button>
+
+<% end %>
 
 <%= link "Back", to: Routes.character_sheet_path(@conn, :index) %>
