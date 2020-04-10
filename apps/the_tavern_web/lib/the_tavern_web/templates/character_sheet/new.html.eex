@@ -8,25 +8,26 @@
 		</p>
 	<% end %>
 
-	<div>
+	<div class="field">
 		<%= label f, :name %>
 		<%= text_input f, :name %>
 		<small><%= error_tag f, :name %></small>
 	</div>
 
-	<div>
+	<div class="field">
 		<%= label f, :class %>
 		<%= select f, :class, get_class_options() %>
 		<small><%= error_tag f, :class %></small>
 
 	</div>
 
-	<div>
+	<div class="field">
 		<%= label f, :level %>
 		<%= number_input f, :level %>
 		<small><%= error_tag f, :level %></small>
 	</div>
 
-	<button type="submit">Submit</button>
+	<%= submit "Submit" %>
+	<%= link "Cancel", to: Routes.character_sheet_path(@conn, :index) %>
 
 <% end %>

@@ -9,6 +9,11 @@
     <%= csrf_meta_tag() %>
   </head>
   <body>
+		<header role="header">
+			<div>
+				<%= link "The Tavern", to: Routes.character_sheet_path(@conn, :index) %>
+			</div>
+		</header>
     <main role="main" class="container">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>

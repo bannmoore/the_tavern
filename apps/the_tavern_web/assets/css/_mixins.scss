@@ -1,0 +1,22 @@
+@mixin tablet {
+	@media all and (min-width: 768px) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media all and (min-width: 980px) {
+		@content;
+	}
+}
+
+@mixin layout-width {
+	margin: 0 auto;
+	max-width: 900px;
+	min-width: 100px;
+	width: 95%;
+
+	@include tablet {
+		width: 80%;
+	}
+}

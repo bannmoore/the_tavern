@@ -1,4 +1,4 @@
-const backLink = () => cy.contains("Back");
+const cancelLink = () => cy.contains("Cancel");
 const nameField = () => cy.get('input[name="character_sheet[name]"]');
 const abilityField = (ability) =>
 	cy.get(`input[name="character_sheet[ability_${ability}]"]`);
@@ -11,8 +11,8 @@ class EditPage {
 		nameField().should("have.value", characterName);
 	}
 
-	clickBackLink() {
-		backLink().click();
+	clickCancelLink() {
+		cancelLink().click();
 	}
 
 	clearNameField() {

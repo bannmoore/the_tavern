@@ -1,0 +1,28 @@
+input,
+textarea,
+select {
+	display: block;
+	padding: 5px;
+	margin: 5px 0px;
+	border: 1px solid #cccccc;
+	box-shadow: inset 0 1px 3px #dddddd;
+	border-radius: 4px;
+	box-sizing: border-box;
+	line-height: normal;
+
+	&.not-valid {
+		box-shadow: 0 0 5px $error-red;
+		border-color: $error-red;
+	}
+}
+
+.field {
+	& + & {
+		margin-top: 10px;
+	}
+}
+
+button[type="submit"] {
+	margin-top: 10px;
+	margin-right: 10px;
+}

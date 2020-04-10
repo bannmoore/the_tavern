@@ -1,4 +1,9 @@
 <h2>Show Character Sheet</h2>
+<p>
+<%= link "Back", to: Routes.character_sheet_path(@conn, :index) %>
+| <%= link "Edit", to: Routes.character_sheet_path(@conn, :edit, @character_sheet) %>
+</p>
+
 <ul>
   <li>
     <strong>Name:</strong>
@@ -23,6 +28,3 @@
 	<li>WIS: <%= @character_sheet.ability_wis %> (<%= render_modifier(@character_sheet.ability_wis) %>)</li>
 	<li>CHA: <%= @character_sheet.ability_cha %> (<%= render_modifier(@character_sheet.ability_cha) %>)</li>
 </ul>
-
-<%= link "Back", to: Routes.character_sheet_path(@conn, :index) %>
-<%= link "Edit", to: Routes.character_sheet_path(@conn, :edit, @character_sheet) %>

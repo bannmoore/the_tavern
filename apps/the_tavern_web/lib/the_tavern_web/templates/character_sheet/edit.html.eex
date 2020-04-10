@@ -63,7 +63,6 @@
 	</div>
 
 	<button type="submit">Submit</button>
+	<%= link "Cancel", to: Routes.character_sheet_path(@conn, :index) %>
 
 <% end %>
-
-<%= link "Back", to: Routes.character_sheet_path(@conn, :index) %>

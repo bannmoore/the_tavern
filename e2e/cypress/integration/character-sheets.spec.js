@@ -46,12 +46,12 @@ describe("Character Sheets", function () {
 	});
 
 	describe("Edit character sheet", function () {
-		it("Navigates to index page after clicking Back link", function () {
+		it("Navigates to index page after clicking Cancel link", function () {
 			indexPage.visit();
 			indexPage.clickCharacterEditLink(characterData.name);
 			editPage.assert(characterData.name);
 
-			editPage.clickBackLink();
+			editPage.clickCancelLink();
 			indexPage.assert();
 		});
 

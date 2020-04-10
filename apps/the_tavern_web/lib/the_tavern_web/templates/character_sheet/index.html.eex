@@ -1,4 +1,7 @@
 <h1>Character Sheets</h1>
+<p>
+	<%= link "New Character Sheet", to: Routes.character_sheet_path(@conn, :new) %>
+</p>
 
 <table class="table">
   <thead>
@@ -6,7 +9,7 @@
       <th>Name</th>
       <th>Class</th>
       <th>Level</th>
-			<th></th>
+			<th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -17,12 +20,10 @@
         <td><%= character_sheet.level %></td>
 				<td>
 				 	<%= link "Show", to: Routes.character_sheet_path(@conn, :show, character_sheet) %>
-					<%= link "Edit", to: Routes.character_sheet_path(@conn, :edit, character_sheet) %>
-					<%= link "Delete", to: Routes.character_sheet_path(@conn, :delete, character_sheet), method: :delete, data: [confirm: "Are you sure?"] %>
+					| <%= link "Edit", to: Routes.character_sheet_path(@conn, :edit, character_sheet) %>
+					| <%= link "Delete", to: Routes.character_sheet_path(@conn, :delete, character_sheet), method: :delete, data: [confirm: "Are you sure?"] %>
 				</td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= link "New Character Sheet", to: Routes.character_sheet_path(@conn, :new) %>
