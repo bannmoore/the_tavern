@@ -16,15 +16,10 @@ defmodule TheTavernWeb.Router do
   scope "/", TheTavernWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/", CharacterSheetController, :index
 
     resources("/character-sheets", CharacterSheetController,
       only: [:index, :new, :create, :delete, :edit, :show, :update]
     )
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", TheTavernWeb do
-  #   pipe_through :api
-  # end
 end
