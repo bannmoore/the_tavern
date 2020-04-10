@@ -5,6 +5,10 @@ const TerserPlugin = require("terser-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
+function isDevelopment(options) {
+	return options.mode && options.mode === "development";
+}
+
 module.exports = (env, options) => ({
 	optimization: {
 		minimizer: [
@@ -29,8 +33,17 @@ module.exports = (env, options) => ({
 				},
 			},
 			{
-				test: /\.css$/,
-				use: [MiniCssExtractPlugin.loader, "css-loader"],
+				test: /\.scss$/,
+				use: [
+					MiniCssExtractPlugin.loader,
+					"css-loader",
+					{
+						loader: "sass-loader",
+						options: {
+							sourceMap: isDevelopment(options),
+						},
+					},
+				],
 			},
 		],
 	},
