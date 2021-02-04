@@ -8,7 +8,7 @@ on:
 
 jobs:
   unit-tests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     services:
       postgres:
         image: postgres:11
@@ -42,7 +42,7 @@ jobs:
       - name: Unit tests
         run: mix test
   e2e-tests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     services:
       postgres:
         image: postgres:11
