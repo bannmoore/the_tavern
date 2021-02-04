@@ -14,11 +14,13 @@ mix deps.get
 
 docker-compose up -d
 mix ecto.create
+mix ecto.migrate
 ```
 
 Start the server:
 
 ```sh
+# will be available at http://localhost:4000
 mix phx.server
 ```
 
