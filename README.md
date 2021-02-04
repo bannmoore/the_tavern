@@ -1,6 +1,6 @@
 # The Tavern
 
-[![Build Status](https://travis-ci.org/bannmoore/the_tavern.svg?branch=master)](https://travis-ci.org/bannmoore/the_tavern)
+![The Tavern CI](https://github.com/bannmoore/the_tavern/workflows/The%20Tavern%20CI/badge.svg)
 
 ## Getting Started
 
