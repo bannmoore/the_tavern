@@ -37,6 +37,8 @@ jobs:
           restore-keys: ${{ runner.os }}-mix-
       - name: Install elixir dependencies
         run: mix deps.get
+      - name: Check
+        run: mix check
       - name: Set up database
         run: mix do ecto.create, ecto.migrate
       - name: Unit tests
