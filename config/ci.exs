@@ -3,8 +3,8 @@ use Mix.Config
 # Configure your database
 config :the_tavern, TheTavern.Repo,
   username: "postgres",
-  password: "",
-  database: "the_tavern_dev",
+  password: "postgres",
+  database: "the_tavern_ci",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
