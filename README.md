@@ -4,7 +4,19 @@
 
 ## Getting Started
 
-First-time setup:
+### Dependencies
+
+```
+$ elixir -v
+Erlang/OTP 22 [erts-10.4.4] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [hipe] [dtrace]
+
+Elixir 1.8.1 (compiled with Erlang/OTP 22)
+
+$ node -v
+v10.16.2
+```
+
+### First-time Setup
 
 ```sh
 bin/setup.sh
